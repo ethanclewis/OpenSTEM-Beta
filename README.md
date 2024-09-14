@@ -8,8 +8,7 @@
 # DHT Sensors
 ## InfluxDB Upload Testing
 ### *DHT_upload_TEST (InfluxDB3).py*
-Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement.  
-Similar to *DHT_upload.py* in **Engine**, but powered by the **influxdb_client_3** package
+Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client package)**.
 ## Read Testing
 ### *DHT_all.py*
 Reads temperature and humidity data from **all** DHT22 sensors every 60 seconds, and prints results to console.
@@ -23,12 +22,10 @@ All scripts collaborate to automate system data uploading and environment regula
 Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievable by the Raspberry Pi, as well as checks and regulates system pH and EC levels every 60 sec.   
 **No cron scheduling required**
 ### *DHT_upload.py*
-Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement.  
-**(influxdb_client package)**  
+Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client package)**.  
 **Execute every 60 seconds with cron (\* \* \* \* \*)**
 ### *water_upload.py*
-Works in tandem with *wired_to_pi.ino* to retreive readings from RTD, pH, and EC sensors, and uploads data to the respective InfluxDB bucket/ measurement.  
-**(influxdb_client package)**  
+Works in tandem with *wired_to_pi.ino* to retreive readings from RTD, pH, and EC sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client package)**.  
 **Execute every 60 seconds with cron (\* \* \* \* \*)**
 
 # InfluxDB Testing
