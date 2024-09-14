@@ -33,8 +33,19 @@ Works in tandem with *wired_to_pi.ino* to retreive readings from RTD, pH, and EC
 
 # Lights
 ### *automated_lights_seeds.py*
+Automates the control of all system grow lights based on current time of day during seedling/ germination period.
+- Lights On from 8AM - 12PM  
+**Execute every 1 hour with cron (0 \* \* \* \*)**
 ### *automated_lights.py*
+Automates the control of all system grow lights based on current time of day during adulthood.
+- Lights On from 8AM - 8PM  
+**Execute every 1 hour with cron (0 \* \* \* \*)**
 ### *manual_light_switch.py*
+Provides a command-line interface to toggle all system grow lights.  
+- "yes" = Lights On  
+- "no" = Lights Off  
+
+Lights remain in most recent power state after the script is terminated.
 
 
 # Pump Control Testing
