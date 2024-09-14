@@ -11,7 +11,9 @@
 ### *DHT_upload_TEST.py*
 ## Read Testing
 ### *DHT_all.py*
+Reads temperature and humidity data from **all** DHT22 sensors every 60 seconds, and prints results to console.
 ### *DHTXX.py*
+Reads temperature and humidity data from an **individual** DHT22 sensor every 60 seconds, and prints results to console.
 
 
 # Engine
@@ -28,9 +30,11 @@ Works in tandem with *wired_to_pi.ino* to retreive readings from RTD, pH, and EC
 
 # InfluxDB Testing
 ### *InfluxDB_TEST.ipynb*
-Playground environment to understand and visualize InfluxDB uploading mechanics using simple test data (influxdb_client package).
+Playground environment to understand and visualize InfluxDB uploading mechanics using simple test data.  
+**(influxdb_client package)**
 ### *InfluxDB3_TEST.ipynb*
-Playground environment to understand and visualize InfluxDB3 uploading mechanics using simple test data (influxdb_client_3 package).
+Playground environment to understand and visualize InfluxDB3 uploading mechanics using simple test data.  
+**(influxdb_client_3 package)**
 
 
 # Lights
@@ -50,8 +54,16 @@ Lights remain in most recent power state after the script is terminated.
 
 
 # Pump Control Testing
+- **PMP1:** pH Up
+- **PMP2:** pH Down
+- **PMP3:** Nutrients (EC Up)  
+
+
 ### *PMP_Test.ino*
+Tests **all** pump behavior based on sensor reading thresholds. User can update threshold values via serial monitor commands. 
 ### *PMPX_Test.ino*
+Tests **individual** pump behavior based on sensor reading threshold. User can update threshold value via serial monitor commands. 
 
 
 # Sensor Calibration
+Calibrates EC, pH, and RTD sensors via Arduino serial monitor; calibration commands/ instructions stored in sketches and printed to serial monitor.
