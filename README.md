@@ -58,7 +58,6 @@ Lights remain in most recent power state after the script is terminated.
 - **PMP2:** pH Down
 - **PMP3:** Nutrients (EC Up)  
 
-
 ### *PMP_Test.ino*
 Tests **all** pump behavior based on sensor reading thresholds. User can update threshold values via serial monitor commands. 
 ### *PMPX_Test.ino*
