@@ -1,5 +1,4 @@
 import Adafruit_DHT
-import time
 from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
 import certifi
@@ -25,6 +24,14 @@ sensor_pins = {
     "DHT24": 24
 }
 
+# Log file path
+log_file_path = '/home/openstem/Desktop/openstem_ethan/dht_sensor_log.txt'
+
+# Function to log messages to a text file
+def log_message(message):
+    with open(log_file_path, 'a') as log_file:
+        log_file.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {message}\n")
+
 # Function to get sensor readings
 def get_sensor_readings(sensor, pin):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
@@ -47,37 +54,27 @@ def upload_dht_data(data):
         )
         write_api.write(bucket=bucket, org=org, record=point)
     
-    # Print confirmation with top of the minute timestamp
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"Data uploaded to InfluxDB at {timestamp} for the top of the minute.")
+    # Log confirmation with the timestamp
+    log_message(f"Data uploaded to InfluxDB")
 
-# SENSOR READING LOOP
-while True:
-    # Wait until the top of the next minute
-    now = datetime.now()
-    sleep_time = 60 - now.second  # Calculate sleep time to align with top of the minute
-    time.sleep(sleep_time)
+# Main execution for getting readings and uploading data
+dht_sensor_data = []  # Initialize list for storing sensor data
 
-    dht_sensor_data = []  # Initialize list for storing sensor data
+for sensor_name, pin in sensor_pins.items():
+    # Get readings for each sensor
+    temperature, temperatureF, humidity = get_sensor_readings(sensor, pin)
 
-    for sensor_name, pin in sensor_pins.items():
-        # Get readings for each sensor
-        temperature, temperatureF, humidity = get_sensor_readings(sensor, pin)
+    if temperature is not None and humidity is not None:
+        # Create sensor data dictionary and append to the list
+        sensor_data = {
+            "sensor": sensor_name,
+            "Temp_C": round(temperature, 1),
+            "Temp_F": round(temperatureF, 1),
+            "Humidity": round(humidity, 1)
+        }
+        dht_sensor_data.append(sensor_data)
+    else:
+        log_message(f"{sensor_name}: Sensor failure. Check wiring.")
 
-        if temperature is not None and humidity is not None:
-            # Optional: Print results to console
-            print(f"{sensor_name}: Temp={temperature:0.1f}ºC, Temp={temperatureF:0.1f}ºF, Humidity={humidity:0.1f}%")
-            
-            # Create sensor data dictionary and append to the list
-            sensor_data = {
-                "sensor": sensor_name,
-                "Temp_C": round(temperature, 1),
-                "Temp_F": round(temperatureF, 1),
-                "Humidity": round(humidity, 1)
-            }
-            dht_sensor_data.append(sensor_data)
-        else:
-            print(f"{sensor_name}: Sensor failure. Check wiring.")
-
-    # Upload data to InfluxDB
-    upload_dht_data(dht_sensor_data)
+# Upload data to InfluxDB
+upload_dht_data(dht_sensor_data)

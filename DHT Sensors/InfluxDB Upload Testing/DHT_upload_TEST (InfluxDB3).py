@@ -1,22 +1,17 @@
 import Adafruit_DHT
-from influxdb_client import InfluxDBClient, Point
-from influxdb_client.client.write_api import SYNCHRONOUS
+from influxdb_client_3 import InfluxDBClient3, Point
 import certifi
 from datetime import datetime
-import os
 
 # InfluxDB configuration
 token = '8Kph_oFbnNqTvgUfERhTJveJpw1A08-HDsnhftEIYj8HRSUJSmKIdoPZdaIbNeIkG4likhDrOtr5FgyF5W03hg=='
 org = "Ethan"
-bucket = "Test"  # Use "bucket" instead of "database" in influxdb-client
-url = "https://us-east-1-1.aws.cloud2.influxdata.com"
-
-# Create InfluxDB client
-client = InfluxDBClient(url=url, token=token, org=org, ssl_ca_cert=certifi.where())
-write_api = client.write_api(write_options=SYNCHRONOUS)
+host = "https://us-east-1-1.aws.cloud2.influxdata.com"
+client = InfluxDBClient3(host=host, token=token, org=org, ssl_ca_cert=certifi.where())
+database = "Test"
 
 # SETUP
-sensor = Adafruit_DHT.DHT22     # Sensor type
+sensor = Adafruit_DHT.DHT22  # Sensor type
 
 # Define sensor pins for each DHT sensor
 sensor_pins = {
@@ -53,7 +48,7 @@ def upload_dht_data(data):
             .field("Temp_F", entry["Temp_F"])  # Temperature in Fahrenheit
             .field("Humidity", entry["Humidity"])  # Humidity level
         )
-        write_api.write(bucket=bucket, org=org, record=point)
+        client.write(database=database, record=point)
     
     # Log confirmation with the timestamp
     log_message(f"Data uploaded to InfluxDB")
