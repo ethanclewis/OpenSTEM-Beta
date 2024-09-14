@@ -1,15 +1,15 @@
 # Arduino to Pi Testing
 ### *rest.ino*
+Blank sketch to "rest" the Arduino (do nothing); useful during sketch testing. 
 ### *wired_to_pi_TEST.ino*
+Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievable by the Raspberry Pi.
 ### *wired_to_ino_TEST.py*
+Works in tandem with *wired_to_pi_TEST.ino* to retreive readings from RTD, pH, and EC sensors, and prints readings to the console every 1 second.  
 ### *wired_to_ino_TEST2.py*
+Works in tandem with *wired_to_pi_TEST.ino* to retreive readings from RTD, pH, and EC sensors, and uploads data to the respective InfluxDB bucket/ measurement every 10 seconds **(influxdb_client package)**.  
 
 
 # DHT Sensors
-## InfluxDB Upload Testing
-### *DHT_upload_TEST (InfluxDB3).py*
-Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client package)**.
-## Read Testing
 ### *DHT_all.py*
 Reads temperature and humidity data from **all** DHT22 sensors every 60 seconds, and prints results to console.
 ### *DHTXX.py*
@@ -23,12 +23,17 @@ Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievab
 **No cron scheduling required**
 ### *DHT_upload.py*
 Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client package)**.  
+Successful data uploads and errors are logged in a .txt file.  
 **Execute every 60 seconds with cron (\* \* \* \* \*)**
 ### *water_upload.py*
 Works in tandem with *wired_to_pi.ino* to retreive readings from RTD, pH, and EC sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client package)**.  
+Successful data uploads and errors are logged in a .txt file.  
 **Execute every 60 seconds with cron (\* \* \* \* \*)**
 
+
 # InfluxDB Testing
+### *DHT_upload_TEST (InfluxDB3).py*
+Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client_3 package)**.
 ### *InfluxDB_TEST.ipynb*
 Playground environment to understand and visualize InfluxDB uploading mechanics using simple test data.  
 **(influxdb_client package)**
