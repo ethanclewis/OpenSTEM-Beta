@@ -28,7 +28,9 @@ Works in tandem with *wired_to_pi.ino* to retreive readings from RTD, pH, and EC
 
 # InfluxDB Testing
 ### *InfluxDB_TEST.ipynb*
+Playground environment to understand and visualize InfluxDB uploading mechanics using simple test data (influxdb_client package).
 ### *InfluxDB3_TEST.ipynb*
+Playground environment to understand and visualize InfluxDB3 uploading mechanics using simple test data (influxdb_client_3 package).
 
 
 # Lights
@@ -44,9 +46,6 @@ Automates the control of all system grow lights based on current time of day dur
 **Execute every 1 hour with cron (0 \* \* \* \*)**
 ### *manual_light_switch.py*
 Provides a command-line interface to toggle all system grow lights.  
-- "yes" = Lights On  
-- "no" = Lights Off  
-
 Lights remain in most recent power state after the script is terminated.
 
 
