@@ -24,11 +24,11 @@ Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievab
 **No cron scheduling required**
 ### *DHT_upload.py*
 Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement.  
-Powered by the **influxdb_client** package.
+**(influxdb_client package)**  
 **Execute every 60 seconds with cron (\* \* \* \* \*)**
 ### *water_upload.py*
 Works in tandem with *wired_to_pi.ino* to retreive readings from RTD, pH, and EC sensors, and uploads data to the respective InfluxDB bucket/ measurement.  
-Powered by the **influxdb_client** package.    
+**(influxdb_client package)**  
 **Execute every 60 seconds with cron (\* \* \* \* \*)**
 
 # InfluxDB Testing
