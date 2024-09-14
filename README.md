@@ -9,7 +9,7 @@ Works in tandem with *wired_to_pi_TEST.ino* to retreive readings from RTD, pH, a
 Works in tandem with *wired_to_pi_TEST.ino* to retreive readings from RTD, pH, and EC sensors, and uploads data to the respective InfluxDB bucket/ measurement every 10 seconds **(influxdb_client package)**.  
 
 
-# DHT Sensors
+# DHT Sensor Testing
 ### *DHT_all.py*
 Reads temperature and humidity data from **all** DHT22 sensors every 60 seconds, and prints results to console.
 ### *DHTXX.py*
