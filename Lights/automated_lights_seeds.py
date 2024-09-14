@@ -16,7 +16,7 @@ def log_error_message(message):
 
 # LIGHT SCHEDULE
 start_time = datetime.time(7, 59)  # 8AM (1 minute buffer to account for cron)
-end_time = datetime.time(8, 59)   # 8PM (1 minute buffer to account for cron)
+end_time = datetime.time(11, 59)   # 12PM (1 minute buffer to account for cron)
 
 # Function to control the lights
 def control_lights():
