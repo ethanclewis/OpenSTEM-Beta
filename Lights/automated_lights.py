@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import datetime
 
 # SETUP
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)              # Reference GPIO pins by BCM numbers
 relay_pin = 26                      # GPIO pin
 GPIO.setup(relay_pin, GPIO.OUT)     # Set GPIO pin 26 to output pin
