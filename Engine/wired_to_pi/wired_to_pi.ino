@@ -10,8 +10,8 @@ Ezo_board PMP2 = Ezo_board(57, "PMP2");
 Ezo_board PMP3 = Ezo_board(58, "PMP3");
 
 // Pump control thresholds
-float PH_LOWER_LIMIT = 6.0;
-float PH_UPPER_LIMIT = 7.0;
+float PH_LOWER_LIMIT = 5.5;
+float PH_UPPER_LIMIT = 6.5;
 float EC_LOWER_LIMIT = 1000.0;
 float EC_UPPER_LIMIT = 2000.0;
 float PUMP_DOSE = -0.5;  // Hard-coded dose amount (mL)
