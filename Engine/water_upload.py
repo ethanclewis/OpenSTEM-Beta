@@ -53,12 +53,11 @@ def parse_sensor_data(data):
 def upload_water_data():
     if temp_value is not None and ph_value is not None and ec_value is not None:
         water_sensor_data = [
-            {"sensor": "water_sensor", "RTD": temp_value, "pH": ph_value, "EC": ec_value}
+            {"RTD": temp_value, "pH": ph_value, "EC": ec_value}
         ]
         for entry in water_sensor_data:
             point = (
                 Point("water_sensors")  # Measurement for water sensors
-                .tag("sensor", entry["sensor"])  # Tag for sensor type
                 .field("RTD", entry["RTD"])  # RTD value
                 .field("pH", entry["pH"])  # pH value
                 .field("EC", entry["EC"])  # Electrical conductivity

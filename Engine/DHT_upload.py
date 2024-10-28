@@ -48,7 +48,7 @@ def upload_dht_data(data):
     for entry in data:
         point = (
             Point("dht_sensors")  # Measurement for DHT sensors
-            .tag("zone", entry["zone"])  # Tag for sensor zone
+            .tag("Zone", entry["Zone"])  # Tag for sensor zone
             .field("Temp_C", entry["Temp_C"])  # Temperature in Celsius
             .field("Temp_F", entry["Temp_F"])  # Temperature in Fahrenheit
             .field("Humidity", entry["Humidity"])  # Humidity level
@@ -68,10 +68,10 @@ for zone_name, pin in sensor_pins.items():
     if temperature is not None and humidity is not None:
         # Create sensor data dictionary and append to the list
         sensor_data = {
-            "zone": zone_name,
-            "Temp_C": round(temperature, 1),
-            "Temp_F": round(temperatureF, 1),
-            "Humidity": round(humidity, 1)
+            "Zone": zone_name,
+            "Temp_C": round(temperature, 2),
+            "Temp_F": round(temperatureF, 2),
+            "Humidity": round(humidity, 2)
         }
         dht_sensor_data.append(sensor_data)
     else:
