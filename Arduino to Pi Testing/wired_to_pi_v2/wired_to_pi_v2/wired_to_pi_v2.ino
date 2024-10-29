@@ -1,3 +1,6 @@
+// Polls and prints sensors readings every 10 minutes
+// Pump control every 30 minutes
+
 #include <Wire.h>
 #include <Ezo_i2c.h>
 
