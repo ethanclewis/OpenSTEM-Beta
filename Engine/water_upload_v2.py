@@ -30,7 +30,7 @@ def log_message(message):
 # Function to fetch sensor data from Arduino
 def fetch_sensor_data():
     ser.write(b'R')  # Send 'R' command to request sensor readings
-    time.sleep(1)  # Wait for Arduino to respond
+    time.sleep(5)  # Wait for Arduino to respond
 
     data = {"pH": None, "EC": None, "Temperature": None}
     while ser.in_waiting > 0:
