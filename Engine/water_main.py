@@ -56,7 +56,7 @@ def upload_water_data(data):
         write_api.write(bucket=bucket, org=org, record=point)
         log_message("Data uploaded to InfluxDB", sensor_log_file_path)
     else:
-        log_message("Incomplete data. Upload aborted.", sensor_log_file_path)
+        log_message("Incomplete data - Upload aborted.", sensor_log_file_path)
 
 # Function to trigger pump control on Arduino
 def trigger_pump_control():
