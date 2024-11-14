@@ -1,4 +1,4 @@
-# Arduino to Pi Testing
+# Arduino to Pi Testing (Archive)
 ### *pump_primer.ino*
 Continuously runs pumps such that each respecteive liquid is primed to the end of the hose for use during application.
 ### *rest.ino*
