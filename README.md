@@ -1,8 +1,14 @@
 # Arduino to Pi Testing
+### *pump_primer.ino*
+Continuously runs pumps such that each respecteive liquid is primed to the end of the hose for use during application.
 ### *rest.ino*
-Blank sketch to "rest" the Arduino (do nothing); useful during sketch testing. 
+Blank sketch to "rest" the Arduino (do nothing); useful during sketch testing.  
+### *wired_to_pi.ino*
+Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievable by the Raspberry Pi, as well as checks and regulates system pH and EC levels every 60 sec.  
 ### *wired_to_pi_TEST.ino*
-Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievable by the Raspberry Pi.
+Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievable by the Raspberry Pi.  
+### *wired_to_pi_v4.ino*
+Works in tandem with *water_upload_v2.py* to receive a "read data" command and upload current RTD, pH, and EC sensors to the respective InfluxDB bucket/ measurement.
 ### *wired_to_ino_TEST.py*
 Works in tandem with *wired_to_pi_TEST.ino* to retreive readings from RTD, pH, and EC sensors, and prints readings to the console every 1 second.  
 ### *wired_to_ino_TEST2.py*
@@ -18,9 +24,7 @@ Reads temperature and humidity data from an **individual** DHT22 sensor every 60
 
 # Engine
 All scripts collaborate to automate system data uploading and environment regulation and are desinged to be continuously run by the Raspberry Pi's command-line job scheduler: cron.
-### *wired_to_pi.ino*
-Continuosly polls and processes RTD, pH, and EC sensor data in batches retrievable by the Raspberry Pi, as well as checks and regulates system pH and EC levels every 60 sec.   
-**No cron scheduling required**
+
 ### *DHT_upload.py*
 Retrieves readings from all three DHT sensors, and uploads data to the respective InfluxDB bucket/ measurement **(influxdb_client package)**.  
 Successful data uploads and errors are logged in a .txt file.  
